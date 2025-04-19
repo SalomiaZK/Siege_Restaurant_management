@@ -33,8 +33,8 @@ public class SalesController {
     @GetMapping("/dishes/{id}/bestProcessingTime")
     public DishProcessingTimeResponse getBestProcessingTime(
             @PathVariable String id,
-            @RequestParam String durationUnit,
-            @RequestParam String calculationMode
+            @RequestParam(defaultValue = "SECONDS" ) String durationUnit,
+            @RequestParam (defaultValue = "AVERAGE")String calculationMode
 
     ) {
         return localService.getDishProcessingTime(id, DurationUnit.valueOf(durationUnit), CaluclationMode.valueOf(calculationMode) );
