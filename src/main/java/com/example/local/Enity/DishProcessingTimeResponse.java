@@ -6,11 +6,11 @@ package com.example.local.Enity;
 public class DishProcessingTimeResponse {
     private String dishId;
     private String dishName;
-    private String unit;
+    private DurationUnit unit;
     private String aggregation;
     private double processingTime;
 
-    public DishProcessingTimeResponse(String dishId, String dishName, String unit, String aggregation, double processingTime) {
+    public DishProcessingTimeResponse(String dishId, String dishName, DurationUnit unit, String aggregation, double processingTime) {
         this.dishId = dishId;
         this.dishName = dishName;
         this.unit = unit;
@@ -26,8 +26,8 @@ public class DishProcessingTimeResponse {
     public String getDishName() { return dishName; }
     public void setDishName(String dishName) { this.dishName = dishName; }
 
-    public String getUnit() { return unit; }
-    public void setUnit(String unit) { this.unit = unit; }
+    public DurationUnit getUnit() { return unit; }
+    public void setUnit(DurationUnit unit) { this.unit = unit; }
 
     public String getAggregation() { return aggregation; }
     public void setAggregation(String aggregation) { this.aggregation = aggregation; }
@@ -45,4 +45,6 @@ public class DishProcessingTimeResponse {
                 ", processingTime=" + processingTime +
                 '}';
     }
+
+
 }
