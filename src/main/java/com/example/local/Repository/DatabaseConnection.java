@@ -1,5 +1,6 @@
 package com.example.local.Repository;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.sql.Connection;
@@ -14,9 +15,9 @@ public class DatabaseConnection {
     private final Connection connection;
 
     public DatabaseConnection() {
-        this.user = System.getenv("USER");
-        this.password = System.getenv("PASSWORD");
-        this.url = System.getenv("URL");
+        this.user = "postgres";
+        this.password = "hello";
+        this.url = "jdbc:postgresql://localhost:5432/local";
 
         if (user == null || password == null || url == null) {
             throw new IllegalStateException("Database configuration environment variables not set");
@@ -28,7 +29,7 @@ public class DatabaseConnection {
             throw new RuntimeException("Failed to create database connection", e);
         }
     }
-
+@Bean
     public Connection getConnection() {
         return connection;
     }

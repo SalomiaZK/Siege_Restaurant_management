@@ -23,6 +23,8 @@ public class SalesController {
     public SalesController(LocalService localService) {
         this.localService = localService;
     }
+
+
     @GetMapping("/bestSales")
     public BestSales  getBestSales(@RequestParam(required = false) int limit) {
         return localService.getBestSales(limit);

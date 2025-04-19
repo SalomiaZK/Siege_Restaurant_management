@@ -7,6 +7,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Component
+@Repository
 public class LocalFetcher {
     private final RestTemplate restTemplate;
     private final DatabaseConnection databaseConnection;
@@ -24,11 +25,14 @@ public class LocalFetcher {
     private final OrderCrud orderCrud;
     private final String url;
 
-    public LocalFetcher() {
-        this.restTemplate = new RestTemplate();
-        this.databaseConnection = new DatabaseConnection();
-        this.dishCrud = new DishCrud();
-        this.orderCrud = new OrderCrud();
+    public LocalFetcher(RestTemplate restTemplate,
+                        DatabaseConnection databaseConnection,
+                        DishCrud dishCrud,
+                        OrderCrud orderCrud) {
+        this.restTemplate = restTemplate;
+        this.databaseConnection = databaseConnection;
+        this.dishCrud = dishCrud;
+        this.orderCrud = orderCrud;
         this.url = System.getenv("FETCH_URL");
 
         if (this.url == null) {
