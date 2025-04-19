@@ -1,6 +1,5 @@
 package com.example.local.Repository;
 
-
 import org.springframework.context.annotation.Configuration;
 
 import java.sql.Connection;
@@ -9,27 +8,28 @@ import java.sql.SQLException;
 
 @Configuration
 public class DatabaseConnection {
-    private final String user = System.getenv("USER");
-    private final  String password = System.getenv("PASSWORD");
-    private final String url = System.getenv("URL") ;
-
-    private Connection connection;
-
-
+    private final String user;
+    private final String password;
+    private final String url;
+    private final Connection connection;
 
     public DatabaseConnection() {
-        try {
-            connection = DriverManager.getConnection(url,user , password);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        this.user = System.getenv("USER");
+        this.password = System.getenv("PASSWORD");
+        this.url = System.getenv("URL");
+
+        if (user == null || password == null || url == null) {
+            throw new IllegalStateException("Database configuration environment variables not set");
         }
 
+        try {
+            this.connection = DriverManager.getConnection(url, user, password);
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to create database connection", e);
+        }
     }
-
 
     public Connection getConnection() {
         return connection;
     }
-
 }
-
