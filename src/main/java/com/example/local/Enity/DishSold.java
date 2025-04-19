@@ -4,8 +4,34 @@ public class DishSold {
     private int dishIdentifier;
     private String dishName;
     private int quantitySold;
+    private int price;
+    private String pdV;
 
     public DishSold() {
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getPdV() {
+        return pdV;
+    }
+
+    public void setPdV(String pdV) {
+        this.pdV = pdV;
+    }
+
+    public DishSold(int dishIdentifier, String dishName, int quantitySold, int price, String pdV) {
+        this.dishIdentifier = dishIdentifier;
+        this.dishName = dishName;
+        this.quantitySold = quantitySold;
+        this.price = price;
+        this.pdV = pdV;
     }
 
     // Constructeur

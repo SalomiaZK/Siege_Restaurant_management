@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class BestSales {
+    private  String id;
     private LocalDateTime updatedAt;
     private List<SalesElement> sales;
 
@@ -36,5 +37,19 @@ public class BestSales {
                 "updatedAt=" + updatedAt +
                 ", sales=" + sales +
                 '}';
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public BestSales(String id, LocalDateTime updatedAt, List<SalesElement> sales) {
+        this.id = id;
+        this.updatedAt = updatedAt;
+        this.sales = sales;
     }
 }

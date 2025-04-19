@@ -67,7 +67,7 @@ public class LocalFetcher {
         }
 
         ArrayList<SalesElement> salesElements = mostSolds.stream()
-                .map(s -> new SalesElement(null, s.getDishName(), s.getQuantitySold(), 0d))
+                .map(s -> new SalesElement(s.getPdV(), s.getDishName(), s.getQuantitySold(), s.getPrice()*s.getQuantitySold()))
                 .collect(Collectors.toCollection(ArrayList::new));
 
         return save(new BestSales(LocalDateTime.now(), salesElements));
@@ -90,6 +90,7 @@ public class LocalFetcher {
                     preparedStatementSalesElement.setString(2, salesElement.getSalesPoint());
                     preparedStatementSalesElement.setLong(3, salesElement.getQuantitySold());
                     preparedStatementSalesElement.setDouble(4, salesElement.getTotalAmount());
+                    preparedStatementSalesElement.setString(5, bestSales.getId());
                     preparedStatementSalesElement.addBatch();
                 }
                 preparedStatementSalesElement.executeBatch();
