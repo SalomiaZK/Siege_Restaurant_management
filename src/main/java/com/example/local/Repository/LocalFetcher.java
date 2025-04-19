@@ -67,7 +67,7 @@ public class LocalFetcher {
         }
 
         ArrayList<SalesElement> salesElements = mostSolds.stream()
-                .map(s -> new SalesElement(s.getPdV(), s.getDishName(), s.getQuantitySold(), s.getPrice()*s.getQuantitySold()))
+                .map(s -> new SalesElement(s.getSalesPoint(), s.getDishName(), s.getQuantitySold(), s.getPrice()*s.getQuantitySold()))
                 .collect(Collectors.toCollection(ArrayList::new));
 
         return save(new BestSales(LocalDateTime.now(), salesElements));

@@ -5,7 +5,7 @@ public class DishSold {
     private String dishName;
     private int quantitySold;
     private int price;
-    private String pdV;
+    private String salesPoint;
 
     public DishSold() {
     }
@@ -18,20 +18,20 @@ public class DishSold {
         this.price = price;
     }
 
-    public String getPdV() {
-        return pdV;
+    public String getSalesPoint() {
+        return salesPoint;
     }
 
-    public void setPdV(String pdV) {
-        this.pdV = pdV;
+    public void setSalesPoint(String salesPoint) {
+        this.salesPoint = salesPoint;
     }
 
-    public DishSold(int dishIdentifier, String dishName, int quantitySold, int price, String pdV) {
+    public DishSold(int dishIdentifier, String dishName, int quantitySold, int price, String salesPoint) {
         this.dishIdentifier = dishIdentifier;
         this.dishName = dishName;
         this.quantitySold = quantitySold;
         this.price = price;
-        this.pdV = pdV;
+        this.salesPoint = salesPoint;
     }
 
     // Constructeur
