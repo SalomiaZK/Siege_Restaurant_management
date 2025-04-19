@@ -80,7 +80,7 @@ public class LocalFetcher {
             preparedStatement.setString(1, UUID.randomUUID().toString().substring(16));
             preparedStatement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
 
-            String sqlSalesElements = "INSERT INTO sales_elements VALUES (?,?,?,?,?)";
+            String sqlSalesElements = "INSERT INTO sales_element VALUES (?,?,?,?,?)";
             PreparedStatement preparedStatementSalesElement = connection.prepareStatement(sqlSalesElements);
             int res = preparedStatement.executeUpdate();
 
