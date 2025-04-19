@@ -56,7 +56,7 @@ public class IngredientCrud implements CrudOperation<Ingredient> {
             }
             ingredient.setTransactions(stockMovements);
 
-            String sqlPrice = "select price_date, price, ingredient_id, price_id from " +
+            String sqlPrice = "select price_date, unit_price, ingredient_id, price_id from " +
                     "ing_price where ingredient_id= ?;";
             PreparedStatement preparedStatementPrice = connection.prepareStatement(sqlPrice);
             preparedStatementPrice.setString(1, id);
@@ -66,7 +66,7 @@ public class IngredientCrud implements CrudOperation<Ingredient> {
                 prices.add(
                         new Price(
                             resultSetPrice.getString("price_id"),
-                                resultSetPrice.getInt("price"),
+                                resultSetPrice.getInt("unit_price"),
                                 resultSetPrice.getObject("price_date", LocalDateTime.class)
 
                         )

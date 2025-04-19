@@ -22,7 +22,7 @@ public class DishCrud implements CrudOperation<Dish> {
     public ArrayList<IngredientInDish> findAllIngredientsOfThisDish(String idDish){
         ArrayList<IngredientInDish> ingredients = new ArrayList<>();
         try {
-            String sql = "SELECT DISTINCT ON (ingredient.ingredient_id) ingredient.ingredient_id,ingredient.ingredient_unity,dish_to_ingredient.dish_id, price , ingredient_name, ingredient_quantity,ingredient_modification_date, price_date from dish_to_ingredient JOIN ingredient ON ingredient.ingredient_id= dish_to_ingredient.ingredient_id join ing_price on ing_price.ingredient_id = ingredient.ingredient_id WHERE dish_id = ?;";
+            String sql = "SELECT DISTINCT ON (ingredient.ingredient_id) ingredient.ingredient_id,ingredient.ingredient_unity,dish_to_ingredient.dish_id, unit_price , ingredient_name, ingredient_quantity,ingredient_modification_date, price_date from dish_to_ingredient JOIN ingredient ON ingredient.ingredient_id= dish_to_ingredient.ingredient_id join ing_price on ing_price.ingredient_id = ingredient.ingredient_id WHERE dish_id = ?;";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, idDish);
             ResultSet res = preparedStatement.executeQuery();
